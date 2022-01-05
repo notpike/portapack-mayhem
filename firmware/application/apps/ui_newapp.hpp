@@ -10,15 +10,15 @@ namespace ui
     class NewAppView : public View
     {
     public:
+
+        uint32_t progress; 
+
         NewAppView(NavigationView &nav);
         std::string title() const override { 
             return "New App"; 
         };
 
     private:
-
-        uint32_t progress; 
-
         void update();
         MessageHandlerRegistration message_handler_update{
             Message::ID::DisplayFrameSync,
@@ -34,12 +34,20 @@ namespace ui
         };
 
         NumberField field_progress {
-            {6*8, 1*8},
+            {12*8, 1*8},
             3,
             {0,PROGRESS_MAX},
             1,
             '0'
         };
+
+        ProgressBar my_progressBar {
+            {2*8, 4*8, 208, 16 },    // Coordinates are: int:x, int:y, int:width, int:height
+        };
+
+        LiveDateTime live_timestamp {
+		    {2*8, 8*8, 11*8, 20 }
+	    };
 
         
     };
