@@ -8,6 +8,12 @@ namespace ui
 {
     NewAppView::NewAppView(NavigationView &nav)
     {
+     
+        add_children({
+            &label_progress,
+            &field_progress
+        });
+
     }
 
     void NewAppView::update()
