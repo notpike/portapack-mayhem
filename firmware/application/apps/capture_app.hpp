@@ -86,7 +86,7 @@ private:
 
 	OptionsField option_bandwidth {
 		{ 5 * 8, 1 * 16 },
-		5,
+		0,
 		{
 			{ "  8k5", 8500 },
 			{ " 11k ", 11000 },
