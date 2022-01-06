@@ -86,6 +86,9 @@
 #include "file.hpp"
 #include "png_writer.hpp"
 
+// Include the new app's header file
+#include "ui_newapp.hpp"
+
 using portapack::receiver_model;
 using portapack::transmitter_model;
 
@@ -494,6 +497,7 @@ ReceiversMenuView::ReceiversMenuView(NavigationView& nav) {
 
 TransmittersMenuView::TransmittersMenuView(NavigationView& nav) {
 	add_items({
+		{ "NewApp", ui::Color::red(), &bitmap_icon_remote, [&nav](){ nav.push<NewAppView>(); } },
 		//{ "..",				ui::Color::light_grey(),&bitmap_icon_previous,	[&nav](){ nav.pop(); } },
 		{ "ADS-B [S]",		ui::Color::yellow(), 	&bitmap_icon_adsb,		[&nav](){ nav.push<ADSBTxView>(); } },
 		{ "APRS", 			ui::Color::green(),		&bitmap_icon_aprs,		[&nav](){ nav.push<APRSTXView>(); } },

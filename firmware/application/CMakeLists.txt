@@ -285,6 +285,9 @@ set(CPPSRC
 	${CPLD_20150901_DATA_CPP}
 	${CPLD_20170522_DATA_CPP}
 	${HACKRF_CPLD_DATA_CPP}
+
+	#New apps go here
+	apps/ui_newapp.cpp
 )
 
 # C sources to be compiled in ARM mode regardless of the global setting.
