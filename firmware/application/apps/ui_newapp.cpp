@@ -2,6 +2,10 @@
 #include "portapack.hpp"
 #include <cstring>
 
+// RX
+#include "baseband_api.hpp"
+#include "portapack_persistent_memory.hpp"
+
 using namespace portapack;
 
 namespace ui
@@ -9,6 +13,19 @@ namespace ui
     // Default selection to button_helloWorld when app starts
     void NewAppView::focus() {
 	    button_helloWorld.focus();
+    }
+
+
+    void rx_start() 
+    {
+        	
+        baseband::set_aprs(1200);
+        
+        receiver_model.set_sampling_rate(3072000);
+        receiver_model.set_baseband_bandwidth(1750000);
+        receiver_model.set_modulation(ReceiverModel::Mode::NarrowbandFMAudio);
+        receiver_model.enable();
+
     }
 
     // Application Main 
@@ -34,6 +51,7 @@ namespace ui
             } else {                                   // progressBar_progress will update automatically.
                 numberField_progress.set_value(0);
             }
+            //(progress < 100) ? numberField_progress.set_value(100) : numberField_progress.set_value(0); // Equivalent Ternary operation
         };                                                  
 
         // When NumberField is changed

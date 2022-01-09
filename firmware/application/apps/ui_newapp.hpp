@@ -21,6 +21,10 @@ namespace ui
 
     private:
 
+
+        void rx_start();
+        void rx_stop();
+
         void update();
         MessageHandlerRegistration message_handler_update{
             Message::ID::DisplayFrameSync,
@@ -38,17 +42,17 @@ namespace ui
         //       the amount of spaces and rows you want by 8.
         //       This gives you 30x38 char
         Button button_helloWorld{
-            {70, 128, 100, 24},             // Coordinates are: int:x (px), int:y (px), int:width (px), int:height (px)
-            "Hello World!"                  // Title
+            {70, 128, 100, 24},            // Coordinates are: int:x (px), int:y (px), int:width (px), int:height (px)
+            "Hello World!"                 // Title
         };
 
         LiveDateTime timestamp {
-		    {6*8, 22*8, 19*8, 20 }          // Coordinates and Dimensions
+		    {6*8, 22*8, 19*8, 20 }         // Coordinates and Dimensions
 	    };
 
         Labels label_progress {
             {{8*8, 33*8},                  // Coordinates are: int:x(px), int:y(px)
-            "Progress:     %",            // Title
+            "Progress:     %",             // Title
             Color::light_grey()}           // Title color
         };
 
