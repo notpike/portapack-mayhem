@@ -114,6 +114,7 @@ public:
 		AudioSpectrum = 53,
 		APRSPacket = 54,
 		APRSRxConfigure = 55,
+		OOKPacket = 56,
 		MAX
 	};
 
@@ -979,6 +980,17 @@ public:
 	const uint32_t samples_per_bit;
 	const uint8_t repeat;
 	const uint32_t pause_symbols;
+};
+
+class OOKPacketMessage : public Message {
+public:
+	constexpr OOKPacketMessage(
+		const baseband::Packet& packet
+	) : Message { ID::OOKPacket },
+		packet { packet }
+	{
+	}
+	baseband::Packet packet;
 };
 
 class SSTVConfigureMessage : public Message {

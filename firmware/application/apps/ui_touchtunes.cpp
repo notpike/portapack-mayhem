@@ -23,7 +23,7 @@
 
 #include "ui_touchtunes.hpp"
 #include "encoders.hpp"
-
+#include "jammer.hpp"
 #include "baseband_api.hpp"
 #include "string_format.hpp"
 
@@ -93,6 +93,8 @@ void TouchTunesView::start_ew() {
 	transmitter_model.set_tx_gain(47);
 	transmitter_model.enable();
 
+	baseband::set_jammer(true, (jammer::JammerType)1, 10000); // FM tone at 10KHz
+
 	//UI
 	text_status.set("Jamming...");
 	progressbar.set_max(1);
@@ -104,10 +106,37 @@ void TouchTunesView::stop_ew() {
 	// Radio
 	transmitter_model.disable();
 
+	// Reset Baseband Image
+	baseband::run_image(portapack::spi_flash::image_tag_ook);
+
 	// UI
 	text_status.set("Ready");
 	progressbar.set_value(0);
 }
+
+void TouchTunesView::start_rx() {
+	baseband::set_ook_data(
+		100,                    // Length
+		OOK_SAMPLERATE / 1766,	// 560us
+		TOUCHTUNES_REPEATS,
+		100						// Pause
+	);
+	
+	receiver_model.set_sampling_rate(OOK_SAMPLERATE);
+	receiver_model.set_baseband_bandwidth(1750000);
+	receiver_model.set_lna(32);
+	receiver_model.enable();
+}
+
+void TouchTunesView::stop_rx() {
+		transmitter_model.disable();
+		text_status.set("Ready");
+}
+
+void TouchTunesView::on_rx_packet(const Message* message) {
+	text_status.set("RX");
+}
+
 
 void TouchTunesView::start_tx(const uint32_t button_index) {
 
@@ -178,6 +207,7 @@ TouchTunesView::TouchTunesView(
 	add_children({
 		&labels,
 		&field_pin,
+		&check_mon,
 		&check_scan,
 		&check_ew,
 		&text_status,
@@ -190,15 +220,20 @@ TouchTunesView::TouchTunesView(
 		pin = v;
 	};
 
+	check_mon.on_select = [this](Checkbox&, bool v) {
+		(v) ? start_rx() : stop_rx();
+	};
+
 	// EW Mode
 	check_ew.on_select = [this](Checkbox&, bool v) {
-		if(v){
-			start_ew();
-		} else {
-			stop_ew();
-		}
+		(v) ? start_ew() : stop_ew();
 	};
 	
+	// Monitor Mode
+	check_mon.on_select = [this](Checkbox&, bool v) {
+		(v) ? start_rx() : stop_rx();
+	};
+
 	const auto button_fn = [this](Button& button) {
 		start_tx(button.id);
 	};

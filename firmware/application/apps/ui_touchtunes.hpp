@@ -129,6 +129,10 @@ private:
 	void on_tx_progress(const uint32_t progress, const bool done);
 	void start_ew();
 	void stop_ew();
+	void start_rx();
+	void stop_rx();
+	void on_rx_packet(const Message* message);
+
 
 	struct remote_layout_t {
 		Point position;
@@ -191,17 +195,26 @@ private:
 		1,
 		'0'
 	};
-	
-	Checkbox check_scan {
+
+	Checkbox check_mon {
 		{ 2 * 8, 25 * 8 },
 		4,
-		"Scan"
+		"Monitor",
+		true
+	};
+
+	Checkbox check_scan {
+		{ 2 * 8, 28 * 8 },
+		4,
+		"Scan",
+		true
 	};
 
 	Checkbox check_ew {
-		{ 2 * 8, 29 * 8 },
+		{ 2 * 8, 31 * 8 },
 		4,
-		"EW Mode"
+		"EW Mode",
+		true
 	};
 
 	Text text_status {
@@ -220,6 +233,15 @@ private:
 			this->on_tx_progress(message.progress, message.done);
 		}
 	};
+
+	MessageHandlerRegistration message_handler_packet {
+		Message::ID::OOKPacket,
+		[this](Message* const p) {
+			const auto message = static_cast<const OOKPacketMessage*>(p);
+			this->on_rx_packet(message);
+		}
+	};
+
 };
 
 } /* namespace ui */
