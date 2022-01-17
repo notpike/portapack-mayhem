@@ -107,6 +107,7 @@ void TouchTunesView::stop_ew() {
 	transmitter_model.disable();
 
 	// Reset Baseband Image
+	baseband::shutdown();
 	baseband::run_image(portapack::spi_flash::image_tag_ook);
 
 	// UI
