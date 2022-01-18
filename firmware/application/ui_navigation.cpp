@@ -67,6 +67,7 @@
 #include "ui_touchtunes.hpp"
 #include "ui_view_wav.hpp"
 #include "ui_whipcalc.hpp"
+#include "ui_pong.hpp"
 
 //#include "acars_app.hpp"
 #include "ais_app.hpp"
@@ -495,6 +496,7 @@ ReceiversMenuView::ReceiversMenuView(NavigationView& nav) {
 TransmittersMenuView::TransmittersMenuView(NavigationView& nav) {
 	add_items({
 		//{ "..",				ui::Color::light_grey(),&bitmap_icon_previous,	[&nav](){ nav.pop(); } },
+		{ "PONG!",           ui::Color::red(),       &bitmap_icon_remote,    [&nav](){ nav.push<PongView>(); } },
 		{ "ADS-B [S]",		ui::Color::yellow(), 	&bitmap_icon_adsb,		[&nav](){ nav.push<ADSBTxView>(); } },
 		{ "APRS", 			ui::Color::green(),		&bitmap_icon_aprs,		[&nav](){ nav.push<APRSTXView>(); } },
 		{ "BHT Xy/EP", 		ui::Color::green(), 	&bitmap_icon_bht,		[&nav](){ nav.push<BHTView>(); } },
