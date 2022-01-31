@@ -3,10 +3,11 @@
 #include "ui_navigation.hpp"
 #include "string_format.hpp"
 
-// Define a constant
 
 namespace ui
 {
+    enum ballDirection{STOP = 0, UP = 1, UP_RIGHT = 2, UP_LEFT = 3, DOWN = 4, DOWN_RIGHT = 5, DOWN_LEFT = 6};
+
     class PongView : public View                          // App class declaration
     {
     public:
@@ -24,6 +25,7 @@ namespace ui
         // Private declarations
         void update();                                      // Function declaration
         void player_two_update(int x);
+        void ball_update(int x, int y);
 
 
         MessageHandlerRegistration message_handler_update{  // Example, not required: MessageHandlerRegistration class
@@ -37,7 +39,6 @@ namespace ui
         uint32_t player_one_x = 90; 
         uint32_t player_two_x = 90; 
 
-
         // Widgets
         // Note: Usable screen space is 240x304px
         // Note: Each char takes up 8x8px so you can multiply 
@@ -47,6 +48,11 @@ namespace ui
         Rectangle ball{
             {110, 240, 20, 20}, 
             ui::Color::white(),  
+        };
+
+        Rectangle ball_negitive{
+            {0, 40, 240, 264}, 
+            ui::Color::black(),  
         };
         
         NumberField player_one_control{
@@ -77,8 +83,52 @@ namespace ui
             {0, 264, 0, 20}, 
             ui::Color::black(), 
         };
-        
+    };
 
-        
+    class Ball {
+        public:
+            Ball(int posX, int posY, bool posession) {
+                x = posX;
+                y = posY;
+                my_ball = posession;
+                direction = STOP;
+            }
+
+            void Ball::set_x(int posX) {
+                x = posX;
+            }
+
+            void Ball::set_Y(int posY) {
+                y = posY;
+            }
+
+            int Ball::get_x() {
+                return x;
+            } 
+
+            int Ball::get_y() {
+                return y;
+            }
+
+            void Ball::set_posession(bool posession) {
+                my_ball = posession;
+            }
+
+            bool Ball::get_posession() {
+                return my_ball;
+            }
+
+            void Ball::set_direction(ballDirection dir) {
+                direction = dir;
+            }
+
+            ballDirection Ball::get_direction() {
+                return direction;
+            }
+
+        private:
+            int x, y;
+            bool my_ball;
+            ballDirection direction;
     };
 } 

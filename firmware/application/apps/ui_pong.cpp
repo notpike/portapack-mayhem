@@ -11,6 +11,11 @@ namespace ui
         player_one_control.focus();
     }
 
+    void PongView::ball_update(int x, int y) {
+        ball_negitive.set_parent_rect({0, 40, 240, 264});
+        ball.set_parent_rect({x, y, 20, 20});
+    };
+
     void PongView::player_two_update(int x) {
         player_two.set_parent_rect({x, 20, 60, 20}); // Update Position
         (x > player_two_x) ? player_two_negitive.set_parent_rect({0, 20, x, 20}) : player_two_negitive.set_parent_rect({x+60, 20, 180-x, 20}); //Hack to repaint screen
@@ -23,6 +28,8 @@ namespace ui
      
         add_children({                                       // Add pointers for widgets
             &ball,
+            &ball_negitive,
+
             &player_one_control,
             &player_one_negitive,
             &player_one,
@@ -31,6 +38,9 @@ namespace ui
             &player_two_negitive,
         });
 
+        // Ball
+        Ball ball(110, 240, true);
+        
         // Player One's Controls INIT
         player_one_control.visible(false);
         player_one_control.set_value(90);
@@ -42,6 +52,10 @@ namespace ui
             (v > player_one_x) ? player_one_negitive.set_parent_rect({0, 264, v, 20}) : player_one_negitive.set_parent_rect({v+60, 264, 180-v, 20}); //Hack to repaint screen
             
             player_one_x = v;
+
+            if(ball.get_direction()) {
+
+            }
 
         };
 
