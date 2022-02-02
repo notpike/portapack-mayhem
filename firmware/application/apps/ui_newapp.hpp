@@ -36,13 +36,14 @@ namespace ui
         // DIR CRUD                                            
         bool create_dir(const std::filesystem::path& path, std::string name);
         std::vector<file_entry> list_dir(const std::filesystem::path& path);
-        void delete_dir_or_file(const std::filesystem::path& path, std::string name);
 
         // File CRUD
-        void create_file(const std::filesystem::path& path, std::string name);
+        bool create_file(const std::filesystem::path& path, std::string name);
+        bool rename_dir_or_file(const std::filesystem::path& path, std::string old_name, std::string new_name);
         std::string read_file(const std::filesystem::path& path, std::string name);
-        void write_file(const std::filesystem::path& path, std::string name, std::string data);
-        void append_file(const std::filesystem::path& path, std::string name, std::string data);
+        bool write_file(const std::filesystem::path& path, std::string name, std::string data);
+        bool delete_dir_or_file(const std::filesystem::path& path, std::string name);
+
 
         // Widgets
         Console my_console {
