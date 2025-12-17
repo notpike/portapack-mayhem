@@ -651,6 +651,13 @@ set(MODE_CPPSRC
 )
 DeclareTargets(PSTX sstvtx)
 
+### SSTV RX
+
+set(MODE_CPPSRC
+	proc_sstvrx.cpp
+)
+DeclareTargets(PSRX sstvrx)
+
 ### TPMS
 
 set(MODE_CPPSRC
