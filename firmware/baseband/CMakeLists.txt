@@ -704,6 +704,13 @@ set(MODE_CPPSRC
 )
 DeclareTargets(PATX audio_tx)
 
+### SubCar Decoders
+
+set(MODE_CPPSRC
+	proc_subcar.cpp
+)
+DeclareTargets(PSCD subcar)
+
 
 ### HackRF "factory" firmware
 

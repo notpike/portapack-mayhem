@@ -145,6 +145,7 @@ class Message {
         SSTVRXProgress = 87,
         SSTVRXPhaseSlant = 88,
         SSTVRXCalibration = 89,
+        SubCarData = 90,
         MAX
     };
 
@@ -1677,6 +1678,25 @@ class FlexDebugMessage : public Message {
     uint32_t val1;
     uint32_t val2;
     char text[64];
+};
+
+class SubCarDataMessage : public Message {
+   public:
+    constexpr SubCarDataMessage(
+        uint8_t sensorType = 0,
+        uint16_t bits = 0,
+        uint64_t data = 0,
+        uint64_t data2 = 0)
+        : Message{ID::SubCarData},
+          sensorType{sensorType},
+          bits{bits},
+          data{data},
+          data2{data2} {
+    }
+    uint8_t sensorType = 0;
+    uint16_t bits = 0;
+    uint64_t data = 0;
+    uint64_t data2 = 0;
 };
 
 #endif /*__MESSAGE_H__*/
