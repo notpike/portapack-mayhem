@@ -49,7 +49,7 @@ void FourFSKProcessor::execute(const buffer_c8_t& buffer) {
                     cur_bit << 1;                                                                   // Shift left by 1
                     cur_bit |= (shared_memory.bb_data.data[bit_pos >> 3] << (bit_pos & 7)) & 0x80;  // OR Equal next bit               
                     bit_pos++;
-                    
+
                     if (progress_count >= progress_notice) {
                         progress_count = 0;
                         txprogress_message.progress++;
@@ -94,7 +94,6 @@ void FourFSKProcessor::on_message(const Message* const p) {
     if (message.id == Message::ID::FourFSKConfigure) {
         samples_per_bit = message.samples_per_bit;
         length = message.stream_length + 32;  // Why ?!
-
         
         // 4FSK
         //            cf
@@ -102,6 +101,7 @@ void FourFSKProcessor::on_message(const Message* const p) {
         //    |    |  |  |    |
         //===========================
         //    11   10    01   00
+
         shift_one_one = message.shift * (0xFFFFFFFFULL / 2280000);       // Low Frequency
         shift_one_zero = (message.shift / 2) * (0xFFFFFFFFULL / 2280000);
         shift_zero_one = -shift_one_zero;

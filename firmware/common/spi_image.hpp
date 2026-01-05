@@ -103,6 +103,10 @@ constexpr image_tag_t image_tag_afsk{'P', 'A', 'F', 'T'};
 constexpr image_tag_t image_tag_audio_tx{'P', 'A', 'T', 'X'};
 constexpr image_tag_t image_tag_fsktx{'P', 'F', 'S', 'K'};
 constexpr image_tag_t image_tag_fskrx{'P', 'F', 'S', 'R'};
+
+constexpr image_tag_t image_tag_4fsktx{'P', 'F', 'F', 'K'};
+constexpr image_tag_t image_tag_4fskrx{'P', 'F', 'F', 'R'};
+
 constexpr image_tag_t image_tag_jammer{'P', 'J', 'A', 'M'};
 constexpr image_tag_t image_tag_mic_tx{'P', 'M', 'T', 'X'};
 constexpr image_tag_t image_tag_ook{'P', 'O', 'O', 'K'};

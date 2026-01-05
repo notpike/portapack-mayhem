@@ -62,6 +62,7 @@
 #include "ui_subghzd.hpp"
 #include "ui_battinfo.hpp"
 #include "ui_external_items_menu_loader.hpp"
+#include "ui_4fsk_tx.hpp"
 
 #include "ais_app.hpp"
 #include "analog_audio_app.hpp"
@@ -70,6 +71,7 @@
 #include "ble_tx_app.hpp"
 #include "capture_app.hpp"
 #include "pocsag_app.hpp"
+
 
 #include "core_control.hpp"
 #include "file.hpp"
@@ -141,6 +143,7 @@ const NavigationView::AppList NavigationView::appList = {
     {"rdstx", "RDS", TX, ui::Color::green(), &bitmap_icon_rds, new ViewFactory<RDSView>()},
     {"touchtune", "TouchTune", TX, ui::Color::green(), &bitmap_icon_touchtunes, new ViewFactory<TouchTunesView>()},
     {"signalgen", "SignalGen", TX, Color::green(), &bitmap_icon_cwgen, new ViewFactory<SigGenView>()},
+    {"4fsktx", "4FSK TX", TX, ui::Color::green(), &bitmap_icon_pocsag, new ViewFactory<FourFSKTXView>()},
     /* TRX ********************************************************************/
     {"microphone", "Mic", TRX, Color::green(), &bitmap_icon_microphone, new ViewFactory<MicTXView>()},
     /* UTILITIES *************************************************************/

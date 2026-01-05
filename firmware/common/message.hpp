@@ -147,6 +147,7 @@ class Message {
         SSTVRXCalibration = 89,
         SubCarData = 90,
         FourFSKConfigure = 91,
+        FourFSKToSend = 92,
         MAX
     };
 
@@ -1539,6 +1540,34 @@ class AudioBeepMessage : public Message {
 class PocsagTosendMessage : public Message {
    public:
     constexpr PocsagTosendMessage(
+        uint16_t baud = 1200,
+        uint8_t type = 2,
+        char function = 'D',
+        char phase = 'N',
+        uint8_t msglen = 0,
+        uint8_t msg[31] = {0},
+        uint64_t addr = 0)
+        : Message{ID::PocsagTosend},
+          baud{baud},
+          type{type},
+          function{function},
+          phase{phase},
+          msglen{msglen},
+          addr{addr} {
+        memcpy(this->msg, msg, 31);
+    }
+    uint16_t baud = 1200;
+    uint8_t type = 2;
+    char function = 'D';
+    char phase = 'N';
+    uint8_t msglen = 0;
+    uint8_t msg[31] = {0};
+    uint64_t addr = 0;
+};
+
+class FourFSKTosendMessage : public Message {
+   public:
+    constexpr FourFSKTosendMessage(
         uint16_t baud = 1200,
         uint8_t type = 2,
         char function = 'D',
