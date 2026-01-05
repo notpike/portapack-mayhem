@@ -146,6 +146,7 @@ class Message {
         SSTVRXPhaseSlant = 88,
         SSTVRXCalibration = 89,
         SubCarData = 90,
+        FourFSKConfigure = 91,
         MAX
     };
 
@@ -1153,7 +1154,7 @@ class SSTVRXConfigureMessage : public Message {
    public:
     constexpr SSTVRXConfigureMessage(
         const uint8_t code)
-        : Message{id : ID::SSTVRXConfigure},
+        : Message{ID::SSTVRXConfigure},
           code(code) {
     }
 
@@ -1213,6 +1214,26 @@ class FSKConfigureMessage : public Message {
         const uint32_t shift,
         const uint32_t progress_notice)
         : Message{ID::FSKConfigure},
+          stream_length(stream_length),
+          samples_per_bit(samples_per_bit),
+          shift(shift),
+          progress_notice(progress_notice) {
+    }
+
+    const uint32_t stream_length;
+    const uint32_t samples_per_bit;
+    const uint32_t shift;
+    const uint32_t progress_notice;
+};
+
+class FourFSKConfigureMessage : public Message {
+   public:
+    constexpr FourFSKConfigureMessage(
+        const uint32_t stream_length,
+        const uint32_t samples_per_bit,
+        const uint32_t shift,
+        const uint32_t progress_notice)
+        : Message{ID::FourFSKConfigure},
           stream_length(stream_length),
           samples_per_bit(samples_per_bit),
           shift(shift),
