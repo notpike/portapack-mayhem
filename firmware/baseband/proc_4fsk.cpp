@@ -66,11 +66,11 @@ void FourFSKProcessor::execute(const buffer_c8_t& buffer) {
             }
 
 
-            if (cur_bit == 0x11) {
+            if (cur_bit == 0b11) {
                 phase += shift_one_one;
-            } else if(cur_bit == 0x10) {
+            } else if(cur_bit == 0b10) {
                 phase += shift_one_zero;
-            } else if(cur_bit == 0x1) {
+            } else if(cur_bit == 0b1) {
                 phase += shift_zero_one;
             } else {
                 phase += shift_zero_zero;
