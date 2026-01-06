@@ -44,6 +44,7 @@ void FourFSKProcessor::execute(const buffer_c8_t& buffer) {
                     configured = false;
                 } else {
 
+                    // Current asumption is MSB comes first
                     cur_bit = (shared_memory.bb_data.data[bit_pos >> 3] << (bit_pos & 7)) & 0x80;   // First bit
                     bit_pos++;
                     cur_bit << 1;                                                                   // Shift left by 1
@@ -100,12 +101,13 @@ void FourFSKProcessor::on_message(const Message* const p) {
         //            |
         //    |    |  |  |    |
         //===========================
-        //    11   10    01   00
+        //    11   10    00   01
+        // https://k3smt.org/digital-radio/
 
-        shift_one_one = message.shift * (0xFFFFFFFFULL / 2280000);       // Low Frequency
-        shift_one_zero = (message.shift / 2) * (0xFFFFFFFFULL / 2280000);
-        shift_zero_one = -shift_one_zero;
-        shift_zero_zero = -shift_one_one;                                // High Frequency
+        shift_zero_one = message.shift * (0xFFFFFFFFULL / 2280000);       // High Frequency
+        shift_zero_zero = (message.shift / 3) * (0xFFFFFFFFULL / 2280000);
+        shift_one_zero = -shift_one_zero;
+        shift_one_one = -shift_one_one;                                   // Low Frequency
 
 
         progress_notice = message.progress_notice;

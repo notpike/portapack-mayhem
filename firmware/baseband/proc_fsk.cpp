@@ -83,8 +83,8 @@ void FSKProcessor::on_message(const Message* const p) {
         samples_per_bit = message.samples_per_bit;
         length = message.stream_length + 32;  // Why ?!
 
-        shift_one = message.shift * (0xFFFFFFFFULL / 2280000);
-        shift_zero = -shift_one;
+        shift_one = message.shift * (0xFFFFFFFFULL / 2280000); // High
+        shift_zero = -shift_one;                               // Low
 
         progress_notice = message.progress_notice;
 

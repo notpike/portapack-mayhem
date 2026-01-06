@@ -404,6 +404,13 @@ set(MODE_CPPSRC
 )
 DeclareTargets(PFSK fsktx)
 
+### 4FSK TX
+
+set(MODE_CPPSRC
+	proc_4fsk.cpp
+)
+DeclareTargets(PFFK 4fsktx)
+
 ### Microphone transmit
 
 set(MODE_CPPSRC
