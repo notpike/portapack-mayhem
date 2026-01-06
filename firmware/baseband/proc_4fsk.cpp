@@ -106,8 +106,8 @@ void FourFSKProcessor::on_message(const Message* const p) {
 
         shift_zero_one = message.shift * (0xFFFFFFFFULL / 2280000);       // High Frequency
         shift_zero_zero = (message.shift / 3) * (0xFFFFFFFFULL / 2280000);
-        shift_one_zero = -shift_one_zero;
-        shift_one_one = -shift_one_one;                                   // Low Frequency
+        shift_one_zero = -shift_zero_zero;
+        shift_one_one = -shift_zero_one;                                   // Low Frequency
 
 
         progress_notice = message.progress_notice;
