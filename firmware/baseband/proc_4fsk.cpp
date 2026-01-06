@@ -104,10 +104,10 @@ void FourFSKProcessor::on_message(const Message* const p) {
         //    11   10    00   01
         // https://k3smt.org/digital-radio/
 
-        shift_zero_one = message.shift * (0xFFFFFFFFULL / 2280000);       // High Frequency
+        shift_zero_one = message.shift * (0xFFFFFFFFULL / 2280000);        // High Frequency
         shift_zero_zero = (message.shift / 3) * (0xFFFFFFFFULL / 2280000);
         shift_one_zero = -shift_zero_zero;
-        shift_one_one = -shift_zero_one;                                  // Low Frequency
+        shift_one_one = -shift_zero_one;                                   // Low Frequency
 
 
         progress_notice = message.progress_notice;
