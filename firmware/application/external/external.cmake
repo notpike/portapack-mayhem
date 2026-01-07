@@ -1,4 +1,12 @@
 set(EXTCPPSRC
+	#touchtunes
+	external/touchtunes/main.cpp
+	external/touchtunes/ui_touchtunes.cpp
+
+	#4fsk
+	external/4fsk/main.cpp
+	external/4fsk/ui_4fsk_tx.cpp
+
 	#afsk_rx   16 byte
 	external/afsk_rx/main.cpp
 	external/afsk_rx/ui_afsk_rx.cpp

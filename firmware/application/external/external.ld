@@ -89,11 +89,25 @@ MEMORY
     ram_external_app_flex_rx  (rwx) : org = 0xADF00000, len = 32k
     ram_external_app_sstvrx  (rwx) : org = 0xADF10000, len = 32k
     ram_external_app_subcarrx  (rwx) : org = 0xADF20000, len = 32k
+    ram_external_app_4fsk_tx  (rwx) : org = 0xADF30000, len = 32k
+    ram_external_app_touchtunes  (rwx) : org = 0xADF40000, len = 32k
 
 }
 
 SECTIONS
 {
+    .external_app_touchtunes : ALIGN(4) SUBALIGN(4)
+    {
+        KEEP(*(.external_app.app_touchtunes.application_information));
+        *(*ui*external_app*ui_touchtunes*);
+    } > ram_external_app_touchtunes
+
+    .external_app_4fsk_rx : ALIGN(4) SUBALIGN(4)
+    {
+        KEEP(*(.external_app.app_4fsk_tx.application_information));
+        *(*ui*external_app*ui_4fsk_tx*);
+    } > ram_external_app_4fsk_tx
+
     .external_app_afsk_rx : ALIGN(4) SUBALIGN(4)
     {
         KEEP(*(.external_app.app_afsk_rx.application_information));

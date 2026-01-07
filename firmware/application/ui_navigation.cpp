@@ -57,12 +57,11 @@
 #include "ui_ss_viewer.hpp"
 // #include "ui_test.hpp"
 #include "ui_text_editor.hpp"
-#include "ui_touchtunes.hpp"
+// #include "ui_touchtunes.hpp"
 #include "ui_weatherstation.hpp"
 #include "ui_subghzd.hpp"
 #include "ui_battinfo.hpp"
 #include "ui_external_items_menu_loader.hpp"
-#include "ui_4fsk_tx.hpp"
 
 #include "ais_app.hpp"
 #include "analog_audio_app.hpp"
@@ -141,9 +140,8 @@ const NavigationView::AppList NavigationView::appList = {
     {"ooktx", "OOK", TX, ui::Color::yellow(), &bitmap_icon_remote, new ViewFactory<EncodersView>()},
     {"pocsagtx", "POCSAG TX", TX, ui::Color::green(), &bitmap_icon_pocsag, new ViewFactory<POCSAGTXView>()},
     {"rdstx", "RDS", TX, ui::Color::green(), &bitmap_icon_rds, new ViewFactory<RDSView>()},
-    {"touchtune", "TouchTune", TX, ui::Color::green(), &bitmap_icon_touchtunes, new ViewFactory<TouchTunesView>()},
+    //{"touchtune", "TouchTune", TX, ui::Color::green(), &bitmap_icon_touchtunes, new ViewFactory<TouchTunesView>()},
     {"signalgen", "SignalGen", TX, Color::green(), &bitmap_icon_cwgen, new ViewFactory<SigGenView>()},
-    {"4fsktx", "4FSK TX", TX, ui::Color::green(), &bitmap_icon_pocsag, new ViewFactory<FourFSKTXView>()},
     /* TRX ********************************************************************/
     {"microphone", "Mic", TRX, Color::green(), &bitmap_icon_microphone, new ViewFactory<MicTXView>()},
     /* UTILITIES *************************************************************/
