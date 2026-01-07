@@ -91,11 +91,19 @@ MEMORY
     ram_external_app_subcarrx  (rwx) : org = 0xADF20000, len = 32k
     ram_external_app_4fsk_tx  (rwx) : org = 0xADF30000, len = 32k
     ram_external_app_touchtunes  (rwx) : org = 0xADF40000, len = 32k
+    ram_external_app_pocsag_tx  (rwx) : org = 0xADF50000, len = 32k
+
 
 }
 
 SECTIONS
 {
+    .external_app_pocsag_tx : ALIGN(4) SUBALIGN(4)
+    {
+        KEEP(*(.external_app.app_pocsag_tx.application_information));
+        *(*ui*external_app*ui_pocsag_tx*);
+    } > ram_external_app_pocsag_tx
+
     .external_app_touchtunes : ALIGN(4) SUBALIGN(4)
     {
         KEEP(*(.external_app.app_touchtunes.application_information));

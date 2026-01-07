@@ -292,7 +292,6 @@ set(CPPSRC
 	apps/ui_mictx.cpp
 	apps/ui_modemsetup.cpp
 	apps/ui_playlist.cpp
-	apps/ui_pocsag_tx.cpp
 	apps/ui_rds.cpp
 	apps/ui_recon_settings.cpp
 	apps/ui_recon.cpp
@@ -304,10 +303,8 @@ set(CPPSRC
 	apps/ui_ss_viewer.cpp
 	apps/ui_standalone_view.cpp
 	apps/ui_subghzd.cpp
-	# apps/ui_test.cpp
 	apps/ui_text_editor.cpp
 	apps/ui_touch_calibration.cpp
-	# apps/ui_touchtunes.cpp
 	apps/ui_weatherstation.cpp
 	protocols/aprs.cpp
 	protocols/ax25.cpp

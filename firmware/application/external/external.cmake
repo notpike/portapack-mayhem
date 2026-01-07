@@ -1,4 +1,8 @@
 set(EXTCPPSRC
+	#pocsag tx
+	external/pocsag_tx/main.cpp
+	external/pocsag_tx/ui_pocsag_tx.cpp
+
 	#touchtunes
 	external/touchtunes/main.cpp
 	external/touchtunes/ui_touchtunes.cpp
