@@ -98,9 +98,9 @@ MEMORY
 
 SECTIONS
 {
-    .external_app_4fsk_tx : ALIGN(4) SUBALIGN(4)
+    .external_app_four_fsk_tx : ALIGN(4) SUBALIGN(4)
     {
-        KEEP(*(.external_app.app_4fsk_tx.application_information));
+        KEEP(*(.external_app.app_four_fsk_tx.application_information));
         *(*ui*external_app*four_fsk_tx*);
     } > ram_external_app_4fsk_tx
 

@@ -291,6 +291,7 @@ set(EXTCPPSRC
 )
 
 set(EXTAPPLIST
+	four_fsk_tx
 	afsk_rx
 	calculator
 	font_viewer
