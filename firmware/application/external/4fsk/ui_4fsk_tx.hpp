@@ -19,8 +19,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef __4FSK_TX_H__
-#define __4FSK_TX_H__
+#ifndef __UI_4FSK_TX_H__
+#define __UI_4FSK_TX_H__
 
 #include "ui.hpp"
 #include "ui_widget.hpp"
@@ -36,7 +36,7 @@
 
 using namespace pocsag;
 
-namespace ui {
+namespace ui::external_app::four_fsk_tx {
 
 class FourFSKTXView : public View {
    public:
@@ -156,4 +156,4 @@ class FourFSKTXView : public View {
 
 } /* namespace ui */
 
-#endif /*__4FSK_TX_H__*/
+#endif /*__UI_4FSK_TX_H__*/

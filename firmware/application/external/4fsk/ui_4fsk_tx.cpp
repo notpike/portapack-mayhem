@@ -31,7 +31,7 @@
 using namespace portapack;
 using namespace pocsag;
 
-namespace ui {
+namespace ui::external_app::four_fsk_tx {
 
 #define MAX_POCSAG_LENGTH 80
 

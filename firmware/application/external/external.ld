@@ -98,6 +98,12 @@ MEMORY
 
 SECTIONS
 {
+    .external_app_4fsk_tx : ALIGN(4) SUBALIGN(4)
+    {
+        KEEP(*(.external_app.app_4fsk_tx.application_information));
+        *(*ui*external_app*four_fsk_tx*);
+    } > ram_external_app_4fsk_tx
+
     .external_app_pocsag_tx : ALIGN(4) SUBALIGN(4)
     {
         KEEP(*(.external_app.app_pocsag_tx.application_information));
@@ -109,12 +115,6 @@ SECTIONS
         KEEP(*(.external_app.app_touchtunes.application_information));
         *(*ui*external_app*ui_touchtunes*);
     } > ram_external_app_touchtunes
-
-    .external_app_4fsk_rx : ALIGN(4) SUBALIGN(4)
-    {
-        KEEP(*(.external_app.app_4fsk_tx.application_information));
-        *(*ui*external_app*ui_4fsk_tx*);
-    } > ram_external_app_4fsk_tx
 
     .external_app_afsk_rx : ALIGN(4) SUBALIGN(4)
     {

@@ -24,17 +24,17 @@
 #include "ui_navigation.hpp"
 #include "external_app.hpp"
 
-namespace ui::external_app::ui_4fsk_tx {
+namespace ui::external_app::four_fsk_tx {
 void initialize_app(ui::NavigationView& nav) {
     nav.push<FourFSKTXView>();
 }
-}  // namespace ui::external_app::ui_4fsk_tx
+}  // namespace ui::external_app::four_fsk_tx
 
 extern "C" {
 
-__attribute__((section(".external_app.ui_4fsk_tx.application_information"), used)) application_information_t _application_information_ui_4fsk_tx = {
+__attribute__((section(".external_app.app_4fsk_tx.application_information"), used)) application_information_t _application_information_4fsk_tx = {
     /*.memory_location = */ (uint8_t*)0x00000000,
-    /*.externalAppEntry = */ ui::external_app::ui_4fsk_tx::initialize_app,
+    /*.externalAppEntry = */ ui::external_app::four_fsk_tx::initialize_app,
     /*.header_version = */ CURRENT_HEADER_VERSION,
     /*.app_version = */ VERSION_MD5,
     /*.app_name = */ "4FSK-TX",
